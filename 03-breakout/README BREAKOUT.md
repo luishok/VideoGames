@@ -14,6 +14,13 @@ Implementación del clásico juego Breakout utilizando el motor **Gale** y Pygam
 - **General:**
   - `Barra Espaciadora`  Pausar / Continuar
 
+## Power Up
+- **Cañones** Disparas con F dos misiles que destruiran los ladrillos al tocarlos
+- **MultiBolas** Genera 2 pelotas adicionales
+- **Atajar** Permite atajar la/las pelotas y soltarlas con la tecla Enter
+- **Aumento de tamaño** La/las pelotas aumentan al doble de su tamaño, haciendo mas facil golpear ladrillos y la misma paleta 
+ 
+
 ## ¿Cómo ejecutarlo?
 1. Asegúrate de haber activado el entorno virtual y tener instaladas las dependencias en la raíz del repositorio.
 2. Ubícate en esta carpeta desde tu terminal:
