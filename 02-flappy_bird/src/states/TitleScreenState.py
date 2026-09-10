@@ -33,7 +33,7 @@ class TitleScreenState(BaseState):
         )
         surface.blit(title_text, title_rect)
 
-        # Instrucciones para elegir modo
+        # elegir modo
         sub_text = settings.FONTS["medium"].render("Presiona 1 para Normal", True, settings.COLOR_WHITE)
         sub_rect = sub_text.get_rect(
             center=(settings.VIRTUAL_WIDTH // 2, settings.VIRTUAL_HEIGHT // 2 + 10)
@@ -48,9 +48,7 @@ class TitleScreenState(BaseState):
     def on_input(self, input_id: str, input_data: InputData) -> None:
 
         if input_data.pressed:
-            if input_id == "normal_mode":  # Asumiendo que configuras la tecla '1'
+            if input_id == "normal_mode":
                 self.state_machine.change("count_down", mode="normal")
-            elif input_id == "hard_mode":  # Asumiendo que configuras la tecla '2'
+            elif input_id == "hard_mode": 
                 self.state_machine.change("count_down", mode="hard")
-        # if input_id == "confirm" and input_data.pressed:
-        #     self.state_machine.change("count_down")
