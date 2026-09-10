@@ -110,8 +110,7 @@ class PlayState(BaseState):
                     # --- LÓGICA DE REBOTE DIRECCIONAL CLÁSICO ---
                     paddle_center = self.paddle.x + (self.paddle.width / 2)
                     ball_center = ball.x + (ball.width / 2)
-                    
-                    # Calculamos el vector de distancia desde el centro
+
                     distance = ball_center - paddle_center
                     
                     # Angulo Agresivo en las esquinas
@@ -187,7 +186,7 @@ class PlayState(BaseState):
             if brick is not None:
                 brick.hit()
                 self.score += brick.score()
-                proj.active = False # El láser se destruye al impactar un bloque
+                proj.active = False 
 
                 # Posibilidad de generar power-ups igual que con la pelota
                 if random.random() < 0.1:
@@ -199,7 +198,7 @@ class PlayState(BaseState):
                         )
                     )
 
-        # Limpiar proyectiles inactivos 
+        
         self.projectiles = [p for p in self.projectiles if p.active]
 
 
@@ -261,7 +260,7 @@ class PlayState(BaseState):
         for proj in self.projectiles:
             proj.render(surface)
 
-    # Dibujar unos pequeños cañones grises a los lados de la paleta
+    # cañones
         if getattr(self, "cannons_active", False):
             pygame.draw.rect(surface, (150, 150, 150), (self.paddle.x, self.paddle.y - 4, 8, 8))
             pygame.draw.rect(surface, (150, 150, 150), (self.paddle.x + self.paddle.width - 8, self.paddle.y - 4, 8, 8))
@@ -309,6 +308,6 @@ class PlayState(BaseState):
         
         elif input_id == "shoot" and input_data.pressed:
             if getattr(self, "cannons_active", False) and len(self.projectiles) == 0:
-                # Disparamos desde el extremo izquierdo y derecho
+                
                 self.projectiles.append(Projectile(self.paddle.x + 2, self.paddle.y))
                 self.projectiles.append(Projectile(self.paddle.x + self.paddle.width - 6, self.paddle.y))
