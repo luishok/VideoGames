@@ -60,18 +60,18 @@ class PlayingState(BaseState):
             if self.ghost_timer <= 0:
                 self.bird.is_ghost = False
                 
-                # Se acabó el poder: recargamos la música de fondo de Mario
+                # Se acabó el poder
                 pygame.mixer.music.load("assets/sounds/marios_way.ogg")
-                pygame.mixer.music.play(-1)  # Vuelve a sonar en bucle
+                pygame.mixer.music.play(-1) 
 
-        # 2. Recolección del Power-Up
+        
         for p in self.world.powerups:
             if not p.is_out and p.collides(self.bird.get_rect()):
-                p.is_out = True # Lo eliminamos al recogerlo
+                p.is_out = True
                 self.bird.is_ghost = True
-                self.ghost_timer = 6.0 # 6 segundos de inmunidad
+                self.ghost_timer = 6.0
                 
-                # Activamos el poder: cargamos tu canción custom
+                # Activamos el poder
                 pygame.mixer.music.load("assets/sounds/boost.mp3")
                 pygame.mixer.music.play(-1)
 
@@ -81,12 +81,6 @@ class PlayingState(BaseState):
                         settings.SOUNDS["hurt"].play()
                         self.state_machine.change("count_down", mode=self.mode_name)
                         return
-            # if self.world.collides(self.bird.get_rect()):
-            #     settings.SOUNDS["hurt"].play()
-            #     # self.state_machine.change("score", score=self.score)
-            #     return
-
-
         
 
         if self.world.update_scored(self.bird.get_rect()):
@@ -112,6 +106,5 @@ class PlayingState(BaseState):
                 "pause", bird=self.bird, world=self.world, score=self.score
             )
             return
-        # if input_id == "jump" and input_data.pressed:
-        #     self.bird.jump()
+
         self.game_mode.handle_bird_input(self.bird, input_id, input_data)
