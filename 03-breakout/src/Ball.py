@@ -64,17 +64,11 @@ class Ball:
         self.y += self.vy * dt
 
     def render(self, surface):
-        # surface.blit(
-        #     self.texture, (self.x, self.y), settings.FRAMES["balls"][self.frame]
-        # )
-
-        # 1. Obtenemos la imagen de la pelota desde el spritesheet
         ball_image = self.texture.subsurface(settings.FRAMES["balls"][self.frame])
         
-        # 2. La estiramos dinámicamente basándonos en su ancho y alto actual
+        # La estiramos dinámicamente basándonos en su ancho y alto actual
         scaled_ball = pygame.transform.scale(ball_image, (self.width, self.height))
         
-        # 3. Dibujamos la imagen ya escalada
         surface.blit(scaled_ball, (round(self.x), round(self.y)))
 
     @staticmethod
